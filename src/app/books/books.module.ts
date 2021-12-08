@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BookEffects } from './state/book.effects';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
   declarations: [BookListComponent, BookCardComponent, BookDetailComponent,
@@ -18,6 +19,7 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
   imports: [
     CommonModule,
     BooksRoutingModule,
+    MaterialModule,
     StoreModule.forFeature('books', BookReducer),
     EffectsModule.forFeature([BookEffects])
   ]

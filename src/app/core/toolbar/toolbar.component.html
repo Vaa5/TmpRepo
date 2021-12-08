@@ -1,2 +1,19 @@
-toolbar works!!
-<button mat-button color="primary">klik mi</button>
+<mat-toolbar color="primary" class="sticky">
+  <mat-toolbar-row fxLayoutAlign="space-between center">
+    <div fxLayout="row">
+      <button mat-button>
+        <mat-icon>home</mat-icon>
+        <span class="logo">Gutendex Catalog</span>
+      </button>
+      <div fxLayout="row">
+        <button mat-button>Home</button>
+        <button mat-button>About us</button>
+      </div>
+    </div>
+    <div>
+      <button mat-button fxLayoutAlign="end">
+        Menu
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
