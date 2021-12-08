@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [ToolbarComponent],
   imports: [
-  CommonModule
+  CommonModule, MaterialModule
   ],
   exports: [BrowserAnimationsModule, HttpClientModule, MaterialModule, ToolbarComponent]
 })
