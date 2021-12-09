@@ -23,6 +23,11 @@
   width: 100%;
 }
 
+.cover > img {
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
 .cover > img:hover {
   transform: scale(1.2);
   box-shadow: 0 0 16px rgb(0 0 0 / 70%);
