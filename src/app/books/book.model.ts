@@ -22,7 +22,9 @@ export interface BookState {
 }
 
 export interface Format {
-  imagejpeg: string | URL;
+  imageSrc: string | null;
+  textUrl: string | null;
+  downloadLink: string | null;
 }
 
 export interface Person {
