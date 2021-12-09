@@ -1,5 +1,5 @@
-<div *ngIf="books$ | async as books" class="container" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="5px">
-  <div *ngFor="let book of books" fxFlex="1 2 calc(15em + 20px)">
-      <app-book-card [book]="book" ></app-book-card>
-  </div>
+  <div class="book-container">
+    <div *ngFor="let book of books$ | async as books">
+        <app-book-card [book]="book" ></app-book-card>
+    </div>
 </div>

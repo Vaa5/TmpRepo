@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from '../shared/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { BusyIndicatorComponent } from './busy-indicator/busy-indicator.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { HttpRequestInterceptor } from './interceptors/http-request-interceptor';
 
 @NgModule({
-  declarations: [ToolbarComponent],
+  declarations: [ToolbarComponent, BusyIndicatorComponent],
   imports: [
-  CommonModule
+    CommonModule, MaterialModule
   ],
-  exports: [BrowserAnimationsModule, HttpClientModule, ToolbarComponent]
+  exports: [BrowserAnimationsModule, HttpClientModule, ToolbarComponent, BusyIndicatorComponent],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }]
 })
 export class CoreModule { }

@@ -1,5 +1,5 @@
 import * as AppState from '../../state/app.state';
-import { BookState } from './book.reducer';
+import { BookState } from '../book.model';
 
 // Extends the app state to include the book feature.
 // This is required because books are lazy loaded.

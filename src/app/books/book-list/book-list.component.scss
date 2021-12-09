@@ -1,4 +1,12 @@
-.container{
+.book-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  gap: 10px;
   width: 100%;
   height: 100%;
+  margin-top: 5px;
 }

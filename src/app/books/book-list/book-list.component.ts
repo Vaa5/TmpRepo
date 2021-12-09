@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { State } from '../state';
 import { Store } from '@ngrx/store';
-import { Book } from '../book';
-import { BookPageActions } from '../state/actions';
+import { Book } from '../book.model';
+
 import { getBooks } from '../state/book.selectors';
+import * as BookActions from '../state/book.actions';
+
 
 @Component({
   selector: 'app-book-list',
@@ -19,7 +21,7 @@ export class BookListComponent implements OnInit {
 
   ngOnInit(): void {
     this.books$ = this.store.select(getBooks);
-    this.store.dispatch(BookPageActions.loadBooks());
+    this.store.dispatch(BookActions.loadBooks());
   }
 
 }

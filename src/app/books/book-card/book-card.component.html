@@ -1,3 +1,18 @@
-<mat-card>
-  {{book.title}}
-</mat-card>
+<div class="card">
+    <div class="title">{{book.title}}</div>
+
+  <div class="cover">
+    <img src="https://www.gutenberg.org/cache/epub/84/pg84.cover.small.jpg"
+      alt="Photo of a Shiba Inu">
+  </div>
+  <div class="content">
+    Authors:
+        <div *ngFor="let author of book.authors">
+          {{author.name}}
+        </div>
+  </div>
+  <div class="footer">
+        <button mat-button class="footer-button">LIKE</button>
+        <button mat-button class="footer-button">SHARE</button>
+  </div>
+</div>

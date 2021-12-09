@@ -6,8 +6,9 @@ import { of } from 'rxjs';
 
 /* NgRx */
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { BookPageActions, BookApiActions } from './actions';
+
 import { BookService } from '../book.service';
+import * as BookActions from './book.actions';
 
 @Injectable()
 export class BookEffects {
@@ -17,11 +18,11 @@ export class BookEffects {
   loadBooks$ = createEffect(() => {
     return this.actions$
       .pipe(
-        ofType(BookPageActions.loadBooks),
+        ofType(BookActions.loadBooks),
         mergeMap(() => this.bookService.getBooks()
           .pipe(
-            map(result => BookApiActions.loadBooksSuccess({ result })),
-            catchError(error => of(BookApiActions.loadBooksFailure({ error })))
+            map(result => BookActions.loadBooksSuccess({ result })),
+            catchError(error => of(BookActions.loadBooksFailure({ error })))
           )
         )
       );
