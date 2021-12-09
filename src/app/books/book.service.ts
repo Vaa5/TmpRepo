@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import {  Observable, throwError } from 'rxjs';
-import { catchError, delay } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, delay, map } from 'rxjs/operators';
 import { Result } from './book.model';
 
 @Injectable({
@@ -16,6 +16,14 @@ export class BookService {
   getBooks(): Observable<Result> {
     return this.http.get<Result>(this.booksUrl)
       .pipe(
+        map((result) => {
+          result.results.map((book) => {
+            book.formats.imageSrc = book.formats['image/jpeg'];
+            book.formats.textUrl = book.formats['text/html'];
+          });
+
+          return result;
+        }),
         catchError(this.handleError)
       );
   }

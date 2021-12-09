@@ -1,18 +1,25 @@
 <div class="card">
-    <div class="title">{{book.title}}</div>
+  <div class="title">{{book.title}}</div>
 
   <div class="cover">
-    <img src="https://www.gutenberg.org/cache/epub/84/pg84.cover.small.jpg"
-      alt="Photo of a Shiba Inu">
+    <img [src]="book.formats.imageSrc" alt="Photo of a Shiba Inu">
   </div>
   <div class="content">
     Authors:
-        <div *ngFor="let author of book.authors">
-          {{author.name}}
-        </div>
+    <div *ngFor="let author of book.authors">
+      {{author.name}}
+    </div>
   </div>
   <div class="footer">
-        <button mat-button class="footer-button">LIKE</button>
-        <button mat-button class="footer-button">SHARE</button>
+    <button mat-button matTooltip="See detailed info" color="primary" [routerLink]="['./', book.id]"
+      class="footer-button">
+      <mat-icon>info</mat-icon>Details
+    </button>
+    <a [href]="book.formats.textUrl" matTooltip="Read Online" target="_blank">
+      <button color="primary" mat-icon-button aria-label="Read Online">
+        <mat-icon>chrome_reader_mode</mat-icon>
+        Read
+      </button>
+    </a>
   </div>
 </div>
