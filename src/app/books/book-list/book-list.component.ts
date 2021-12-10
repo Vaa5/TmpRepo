@@ -4,7 +4,7 @@ import { State } from '../state';
 import { Store } from '@ngrx/store';
 import { Book } from '../book.model';
 
-import { getBooks } from '../state/book.selectors';
+import { getBooks, getshowBookCover } from '../state/book.selectors';
 import * as BookActions from '../state/book.actions';
 
 
@@ -15,13 +15,17 @@ import * as BookActions from '../state/book.actions';
 })
 export class BookListComponent implements OnInit {
 
-  books$: Observable<Book[]>;
+  books$ = this.store.select(getBooks);
+  showBookCover$ = this.store.select(getshowBookCover);
 
   constructor(private store: Store<State>) { }
 
   ngOnInit(): void {
-    this.books$ = this.store.select(getBooks);
     this.store.dispatch(BookActions.loadBooks());
+  }
+
+  showImageChange(checked: boolean): void {
+    this.store.dispatch(BookActions.toggleBookCoverVisibility());
   }
 
 }

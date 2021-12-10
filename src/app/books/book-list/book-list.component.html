@@ -1,5 +1,11 @@
-  <div class="book-container">
+<div class="container">
+  <div class="header">
+    <mat-checkbox class="item" (change)="showImageChange($event.checked)" color="primary"
+    [checked]="showBookCover$ | async">Show Book Cover</mat-checkbox>
+  </div>
+  <div class="content">
     <div *ngFor="let book of books$ | async as books">
-        <app-book-card [book]="book" ></app-book-card>
+      <app-book-card [book]="book"></app-book-card>
     </div>
+  </div>
 </div>

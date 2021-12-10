@@ -2,7 +2,7 @@
   <div class="title">{{book.title}}</div>
 
   <div class="cover">
-    <img [src]="book.formats.imageSrc" alt="Photo of a Shiba Inu">
+    <img [src]="book.formats.imageSrc" *ngIf="showBookCover$ | async" alt="Photo of a Shiba Inu">
   </div>
   <div class="content">
     Authors:

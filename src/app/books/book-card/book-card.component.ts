@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Book } from '../book.model';
+import { State } from '../state';
+import { getshowBookCover } from '../state/book.selectors';
 
 @Component({
   selector: 'app-book-card',
@@ -10,8 +13,9 @@ import { Book } from '../book.model';
 export class BookCardComponent implements OnInit {
 
   @Input() book: Book;
+  showBookCover$ = this.store.select(getshowBookCover);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store<State>) { }
 
   ngOnInit(): void {
   }

@@ -10,6 +10,11 @@ export const getBooks = createSelector(
   state => state.results
 );
 
+export const getshowBookCover = createSelector(
+  getBookFeatureState,
+  state => state.showBookCover
+);
+
 export const getError = createSelector(
   getBookFeatureState,
   state => state.error

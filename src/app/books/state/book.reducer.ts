@@ -10,6 +10,7 @@ const initialState: BookState = {
   next: '',
   previous: '',
   results: [],
+  showBookCover: true,
   error: '',
 };
 
@@ -30,6 +31,12 @@ export const BookReducer = createReducer<BookState>(
       ...state,
       results: [],
       error: action.error
+    };
+  }),
+  on(BookActions.toggleBookCoverVisibility, (state, action): BookState => {
+    return {
+      ...state,
+      showBookCover: !state.showBookCover
     };
   })
 );

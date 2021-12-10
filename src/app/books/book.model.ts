@@ -18,6 +18,7 @@ export interface BookState {
   next: string;
   previous: string | null;
   results: Book[];
+  showBookCover: boolean;
   error: string;
 }
 

@@ -1,17 +1,20 @@
 import { createAction, props } from '@ngrx/store';
 import { Result } from '../book.model';
 
+export const toggleBookCoverVisibility = createAction(
+  '[Book List Page] Toggle Book Cover Visibility'
+);
 
 export const loadBooks = createAction(
-  '[Product Page] Load'
+  '[Book] Load'
 );
 
 export const loadBooksSuccess = createAction(
-  '[Book API] Load Success',
+  '[Book] Load Success',
   props<{ result: Result }>()
 );
 
 export const loadBooksFailure = createAction(
-  '[Book API] Load Fail',
+  '[Book] Load Fail',
   props<{ error: string }>()
 );
