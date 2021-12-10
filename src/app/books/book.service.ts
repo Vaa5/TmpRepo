@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
-import { Result } from './book.model';
+import { Book, Result } from './book.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +23,18 @@ export class BookService {
           });
 
           return result;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  getBook(id: string): Observable<Book> {
+    return this.http.get<Book>(`${this.booksUrl}/${id}`)
+      .pipe(
+        map((book) => {
+          book.formats.imageSrc = book.formats['image/jpeg'];
+          book.formats.textUrl = book.formats['text/html'];
+          return book;
         }),
         catchError(this.handleError)
       );

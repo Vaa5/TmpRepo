@@ -15,6 +15,11 @@ export const getshowBookCover = createSelector(
   state => state.showBookCover
 );
 
+export const getSelectedBook = createSelector(
+  getBookFeatureState,
+  state => state.selectedBook
+);
+
 export const getError = createSelector(
   getBookFeatureState,
   state => state.error

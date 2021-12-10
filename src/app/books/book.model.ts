@@ -3,7 +3,7 @@ export interface Book {
   title: string;
   subjects: string[];
   authors: Person[];
-  // translators: Persons[];
+  translators: Person[];
   bookshelves: string[];
   languages: string[];
   copyright: boolean | null;
@@ -18,6 +18,7 @@ export interface BookState {
   next: string;
   previous: string | null;
   results: Book[];
+  selectedBook: Book;
   showBookCover: boolean;
   error: string;
 }

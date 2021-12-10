@@ -27,4 +27,17 @@ export class BookEffects {
         )
       );
   });
+
+  loadSelectedBook$ = createEffect(() => {
+    return this.actions$
+      .pipe(
+        ofType(BookActions.loadSelectedBook),
+        mergeMap((action) => this.bookService.getBook(action.id)
+          .pipe(
+            map(selectedBook => BookActions.loadSelectedBookSuccess({ selectedBook })),
+            catchError(error => of(BookActions.loadSelectedBookFailure({ error })))
+          )
+        )
+      );
+  });
 }

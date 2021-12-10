@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Result } from '../book.model';
+import { Book, Result } from '../book.model';
 
 export const toggleBookCoverVisibility = createAction(
   '[Book List Page] Toggle Book Cover Visibility'
@@ -16,5 +16,20 @@ export const loadBooksSuccess = createAction(
 
 export const loadBooksFailure = createAction(
   '[Book] Load Fail',
+  props<{ error: string }>()
+);
+
+export const loadSelectedBook = createAction(
+  '[Book Detail] loadSelectedBook',
+  props<{ id: string }>()
+);
+
+export const loadSelectedBookSuccess = createAction(
+  '[Book Detail] loadSelectedBook Success',
+  props<{ selectedBook: Book }>()
+);
+
+export const loadSelectedBookFailure = createAction(
+  '[Book Detail] loadSelectedBook Fail',
   props<{ error: string }>()
 );

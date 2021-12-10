@@ -1,1 +1,11 @@
-<p>book-detail works!</p>
+<div class="big-card" *ngIf="selectedBook$ | async as book">
+  <div>
+    {{book | json}}
+  </div>
+</div>
+
+<div *ngIf="error$ | async as error">
+  <div class="error errorLarge">Oh No</div>
+  <div class="error errorMed">The book id</div>
+  <div class="error errorSmall">It's broken</div>
+</div>

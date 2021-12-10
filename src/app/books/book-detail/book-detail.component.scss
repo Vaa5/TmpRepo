@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.big-card {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #904dad;
+  background-color: #926ea1;
+  border-radius: 10px;
+  width: 95%;
+  box-shadow: 0 0 16px rgb(0 0 0 / 60%);
+}
+
+.error {
+  font-weight: bold;
+  color: #7e0505;
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+}
+.errorLarge {
+  font-size: 80px;
+}
+.errorMed {
+  font-size: 30px;
+}
+.errorSmall {
+  font-size: 12px;
+}

@@ -11,6 +11,7 @@ const initialState: BookState = {
   previous: '',
   results: [],
   showBookCover: true,
+  selectedBook: null,
   error: '',
 };
 
@@ -38,5 +39,19 @@ export const BookReducer = createReducer<BookState>(
       ...state,
       showBookCover: !state.showBookCover
     };
-  })
+  }),
+  on(BookActions.loadSelectedBookSuccess, (state, action): BookState => {
+    return {
+      ...state,
+      selectedBook: action.selectedBook,
+      error: ''
+    };
+  }),
+  on(BookActions.loadSelectedBookFailure, (state, action): BookState => {
+    return {
+      ...state,
+      selectedBook: null,
+      error: action.error
+    };
+  }),
 );
