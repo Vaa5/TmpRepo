@@ -1,8 +1,7 @@
 <div class="card">
-  <div class="title">{{book.title}}</div>
-
+  <div [matTooltip]="book.title" class="title">{{book.title}}</div>
   <div class="cover">
-    <img [routerLink]="['./', book.id]" [src]="book.formats.imageSrc" *ngIf="showBookCover$ | async" alt="Photo of a Shiba Inu">
+    <img [routerLink]="['./', book.id]" [src]="book.formats.imageSrc" *ngIf="showBookCover$ | async" alt="Book Cover">
   </div>
   <div class="content">
     Authors:
@@ -10,8 +9,9 @@
       {{author.name}}
     </div>
   </div>
+  <!-- [routerLink]="['./', book.id]" -->
   <div class="footer">
-    <button mat-button matTooltip="See detailed info" color="primary" [routerLink]="['./', book.id]"
+    <button mat-button matTooltip="See detailed info" color="primary" (click)="seeBookDetails(book)"
       class="footer-button">
       <mat-icon>info</mat-icon>Details
     </button>

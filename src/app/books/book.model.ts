@@ -17,8 +17,10 @@ export interface BookState {
   count: number;
   next: string;
   previous: string | null;
-  results: Book[];
+  books: Book[];
   selectedBook: Book;
+  searchedBooks: Book[];
+  searchString: string;
   showBookCover: boolean;
   error: string;
 }

@@ -9,9 +9,11 @@ const initialState: BookState = {
   count: 0,
   next: '',
   previous: '',
-  results: [],
-  showBookCover: true,
+  books: [],
   selectedBook: null,
+  searchedBooks: [],
+  searchString: '',
+  showBookCover: true,
   error: '',
 };
 
@@ -23,14 +25,15 @@ export const BookReducer = createReducer<BookState>(
       count: action.result.count,
       next: action.result.next,
       previous: action.result.previous,
-      results: action.result.results,
+      books: action.result.results,
+      searchedBooks: action.result.results,
       error: ''
     };
   }),
   on(BookActions.loadBooksFailure, (state, action): BookState => {
     return {
       ...state,
-      results: [],
+      books: [],
       error: action.error
     };
   }),
@@ -54,4 +57,34 @@ export const BookReducer = createReducer<BookState>(
       error: action.error
     };
   }),
+  on(BookActions.loadMoreBooksSuccess, (state, action): BookState => {
+    const mergedBooks = state.books.concat(action.result.results);
+    return {
+      ...state,
+      count: action.result.count,
+      next: action.result.next,
+      previous: action.result.previous,
+      books: mergedBooks,
+      error: ''
+    };
+  }),
+  on(BookActions.loadMoreBooksFailure, (state, action): BookState => {
+    return {
+      ...state,
+      selectedBook: null,
+      error: action.error
+    };
+  }),
+  on(BookActions.searchBooks, (state, action): BookState => {
+    return {
+      ...state,
+      searchString: action.searchString
+    };
+  }),
+  on(BookActions.searchBooksFinished, (state, action): BookState => {
+    return {
+      ...state,
+      searchedBooks: action.searchedBooks
+    };
+  })
 );

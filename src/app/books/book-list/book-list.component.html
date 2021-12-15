@@ -1,11 +1,13 @@
 <div class="container">
-  <div class="header">
-    <mat-checkbox class="item" (change)="showImageChange($event.checked)" color="primary"
-    [checked]="showBookCover$ | async">Show Book Cover</mat-checkbox>
-  </div>
+  <app-book-toolbar [ShowBookCover]="showBookCover$ | async" (showBookCoverChange)="showBookCoverChange($event)"
+    [SearchString]="searchString$ | async" (searchStringChange)="searchStringChange($event)">
+  </app-book-toolbar>
   <div class="content">
-    <div *ngFor="let book of books$ | async as books">
+    <div *ngFor="let book of searchedBooks$ | async as books">
       <app-book-card [book]="book"></app-book-card>
     </div>
+  </div>
+  <div class="footer">
+    <button *ngIf="showLoadMoreBooks$ | async" mat-raised-button color="primary" (click)="loadMore()">Load More</button>
   </div>
 </div>

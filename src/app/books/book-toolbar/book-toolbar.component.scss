@@ -1,0 +1,13 @@
+:host {
+  background-color: #926ea1;
+}
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  background-color: #926ea1;
+  width: 100%;
+  margin-left: 10px;
+}

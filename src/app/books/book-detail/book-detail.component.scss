@@ -8,14 +8,46 @@
 
 .big-card {
   display: flex;
-  flex-flow: column wrap;
-  justify-content: flex-start;
-  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-around;
   border: 1px solid #904dad;
   background-color: #926ea1;
   border-radius: 10px;
   width: 95%;
   box-shadow: 0 0 16px rgb(0 0 0 / 60%);
+}
+
+.left-side {
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  align-items: center;
+  margin: 10px;
+}
+
+.left-side > img {
+  min-width: 100px;
+  min-height: 200px;
+  max-width: 200px;
+  max-height: 300px;
+  border-radius: 6px;
+}
+
+.right-side {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  flex: 3;
+  align-items: center;
+  margin: 10px;
+}
+.right-side > * {
+  width: 100%;
+  margin: 10px;
+}
+
+.right-side > h2 {
+  text-align: center;
 }
 
 .error {

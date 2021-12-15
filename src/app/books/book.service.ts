@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
+import { from, Observable, of, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { Book, Result } from './book.model';
 
@@ -40,6 +40,29 @@ export class BookService {
       );
   }
 
+  getMoreBooks(url: string): Observable<Result> {
+    return this.http.get<Result>(url)
+      .pipe(
+        map((result) => {
+          result.results.map((book) => {
+            book.formats.imageSrc = book.formats['image/jpeg'];
+            book.formats.textUrl = book.formats['text/html'];
+          });
+
+          return result;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  searchBooks(books: Book[], searchString: string): Observable<Book[]> {
+    const searchedBooks = books.filter(b => {
+      const tsa = b.title.toLocaleLowerCase().includes(searchString.toLocaleLowerCase());
+      return tsa;
+    });
+    return of(searchedBooks);
+  }
+
   // tslint:disable-next-line:typedef
   private handleError(err: any) {
 
@@ -54,5 +77,4 @@ export class BookService {
     console.error(err);
     return throwError(errorMessage);
   }
-
 }
