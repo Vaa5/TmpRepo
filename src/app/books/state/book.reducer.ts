@@ -80,11 +80,12 @@ export const BookReducer = createReducer<BookState>(
       ...state,
       searchString: action.searchString
     };
-  }),
-  on(BookActions.searchBooksFinished, (state, action): BookState => {
-    return {
-      ...state,
-      searchedBooks: action.searchedBooks
-    };
   })
+  //,
+  // on(BookActions.searchBooksFinished, (state, action): BookState => {
+  //   return {
+  //     ...state,
+  //     searchedBooks: action.searchedBooks
+  //   };
+  // })
 );

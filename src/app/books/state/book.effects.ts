@@ -66,10 +66,15 @@ export class BookEffects {
         withLatestFrom(this.store.select(getBooks).pipe(
           filter(books => !!books.length)
         )),
-        mergeMap(([action, books]) => this.bookService.searchBooks(books, action.searchString)
-          .pipe(
-            map((searchedBooks) => BookActions.searchBooksFinished({ searchedBooks })))
-        )
+        mergeMap(([action, books]) => {
+          const searchedBooks = books.filter(b => {
+            const tsa = b.title.toLocaleLowerCase().includes(action.searchString.toLocaleLowerCase());
+            return tsa;
+          });
+          return of(searchedBooks);
+        })
+        , map((searchedBooks) => BookActions.searchBooksFinished({ searchedBooks }))
+
       );
   });
 
