@@ -18,9 +18,9 @@ export class BookListComponent implements OnInit {
   searchString$ = this.store.select(getSearchString);
 
   searchedBooks$ = this.searchString$.pipe(
-    switchMap((books) => this.store.select(getBooks)
+    switchMap((searchString) => this.store.select(getBooks)
       .pipe(
-        map((searchString) =>
+        map((books) =>
           books.filter(b => b?.title?.toLocaleLowerCase().includes(searchString?.toLocaleLowerCase()))
         )
       )
